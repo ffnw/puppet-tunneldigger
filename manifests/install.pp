@@ -40,7 +40,7 @@ class tunneldigger::install inherits tunneldigger {
     source => 'puppet:///modules/tunneldigger/tunneldigger@.service',
   } ~>
   exec { 'tunneldigger-daemon-reload':
-    command => 'systemctl daemon-reload',
+    command => '/bin/systemctl daemon-reload',
   } ->
   vcsrepo { '/srv/tunneldigger/tunneldigger':
     ensure   => latest,
