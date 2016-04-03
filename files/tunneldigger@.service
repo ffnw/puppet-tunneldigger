@@ -1,0 +1,11 @@
+[Unit]
+Description=Tunneldigger L2TPv3 (instance %I)
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/srv/tunneldigger/start.sh "%I" --syslog-level info --syslog-ident tunneldigger@%I
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
