@@ -25,6 +25,9 @@ define tunneldigger::instance (
       owner  => 'root',
       group  => 'root',
       mode   => '0744';
+    "/etc/tunneldigger/${title}":
+      ensure => directory,
+      mode   => '0755';
     "/etc/tunneldigger/${title}/session-up.sh":
       content => $session_up;
     "/etc/tunneldigger/${title}/session-predown.sh":
