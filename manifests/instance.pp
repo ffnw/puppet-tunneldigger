@@ -5,7 +5,7 @@ define tunneldigger::instance (
   String           $interface          = 'eth0',
   Integer          $max_tunnels        = 1000,
   Integer          $tunnel_id_base     = 0,
-  String           $namespace          = 'default',
+  String           $namespace          = "${title}",
   Boolean          $check_modules      = true,
   String           $filename           = "/var/log/tunneldigger-${title}.log",
   Enum['DEBUG']    $verbosity          = 'DEBUG',

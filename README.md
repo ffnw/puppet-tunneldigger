@@ -41,7 +41,7 @@ tunneldigger::interface { 'backbone':
   interface          => 'eth0',
   max_tunnels        => 1000,
   tunnel_id_base     => 0,
-  namespace          => 'default',
+  namespace          => "${title}",
   check_modules      => true,
   filename           => "/var/log/tunneldigger-${title}.log",
   verbosity          => 'DEBUG',
@@ -64,7 +64,7 @@ tunneldigger::interface { 'backbone':
   * interface (optional, default 'eth0')
   * max\_tunnels (optional, default 1000)
   * tunnel\_id\_base (optional, default 0)
-  * namespace (optional, default 'default')
+  * namespace (optional, default "${title}")
   * check\_modules (optional, default true)
   * filename (optional, default "/var/log/tunneldigger-${title}.log")
   * verbosity (optional, default 'DEBUG')
