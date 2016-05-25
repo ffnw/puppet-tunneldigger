@@ -1,5 +1,11 @@
 class tunneldigger::install inherits tunneldigger {
 
+  if !defined(Package['git']) {
+    package { 'git':
+      ensure => installed,
+    }
+  }
+
   class { 'python' :
     version    => 'system',
     pip        => 'present',
@@ -15,11 +21,6 @@ class tunneldigger::install inherits tunneldigger {
     'libnetfilter-conntrack3':;
     'libevent-dev':;
     'ebtables':;
-  } ->
-  if !defined(Package['git']) {
-    package { 'git':
-      ensure => installed,
-    }
   } ->
   file {
     default:
