@@ -15,7 +15,11 @@ class tunneldigger::install inherits tunneldigger {
     'libnetfilter-conntrack3':;
     'libevent-dev':;
     'ebtables':;
-    'git':;
+  } ->
+  if !defined(Package['git']) {
+    package { 'git':
+      ensure => installed,
+    }
   } ->
   file {
     default:
