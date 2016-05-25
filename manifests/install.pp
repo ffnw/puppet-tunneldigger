@@ -14,7 +14,8 @@ class tunneldigger::install inherits tunneldigger {
     'bridge-utils':;
     'libnetfilter-conntrack3':;
     'libevent-dev':;
-    'ebtables':;
+    'ebtables':
+    'git':;
   } ->
   file {
     default:
