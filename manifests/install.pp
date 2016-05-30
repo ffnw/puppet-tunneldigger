@@ -44,9 +44,6 @@ class tunneldigger::install inherits tunneldigger {
     group  => 'root',
     mode   => '0644',
     source => 'puppet:///modules/tunneldigger/tunneldigger@.service',
-  } ~>
-  exec { 'tunneldigger-daemon-reload':
-    command => '/bin/systemctl daemon-reload',
   } ->
   vcsrepo { '/srv/tunneldigger/tunneldigger':
     ensure   => latest,
