@@ -47,7 +47,7 @@ tunneldigger::interface { 'backbone':
   verbosity          => 'DEBUG',
   log_ip_addresses   => false,
   session_up         => epp('tunneldigger/setup_interface.sh.epp'),
-  session_predown    => '',
+  session_predown    => epp('tunneldigger/donothing.sh.epp'),
   session_down       => epp('tunneldigger/teardown_interface.sh.epp'),
   session_mtuchanged => epp('tunneldigger/mtu_changed.sh.epp'),
 }

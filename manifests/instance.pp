@@ -11,7 +11,7 @@ define tunneldigger::instance (
   Enum['DEBUG']    $verbosity          = 'DEBUG',
   Boolean          $log_ip_addresses   = false,
   String           $session_up         = epp('tunneldigger/setup_interface.sh.epp'),
-  String           $session_predown    = '',
+  String           $session_predown    = epp('tunneldigger/donothing.sh.epp'),
   String           $session_down       = epp('tunneldigger/teardown_interface.sh.epp'),
   String           $session_mtuchanged = epp('tunneldigger/mtu_changed.sh.epp'),
 ) {
