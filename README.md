@@ -43,6 +43,9 @@ tunneldigger::interface { 'backbone':
   tunnel_id_base     => 0,
   namespace          => "${title}",
   check_modules      => true,
+  max_cookies        => $max_tunnels,
+  tunnel_timeout     => 60,
+  pmtu_discovery     => true,
   filename           => "/var/log/tunneldigger-${title}.log",
   verbosity          => 'DEBUG',
   log_ip_addresses   => false,
@@ -66,6 +69,9 @@ tunneldigger::interface { 'backbone':
   * tunnel\_id\_base (optional, default 0)
   * namespace (optional, default "${title}")
   * check\_modules (optional, default true)
+  * max\_cookies (optional, default $max\_tunnels)
+  * tunnel\_timeout (optional, default 60)
+  * pmtu\_discovery (optional, default true)
   * filename (optional, default "/var/log/tunneldigger-${title}.log")
   * verbosity (optional, default 'DEBUG')
   * log\_ip\_addresses (optional, default false)

@@ -6,6 +6,9 @@
      $tunnel_id_base,
      $namespace,
      $check_modules,
+     $max_cookies,
+     $tunnel_timeout,
+     $pmtu_discovery,
      $filename,
      $verbosity,
      $log_ip_addresses,
@@ -48,6 +51,16 @@ namespace=<%= $namespace %>
 
 ; check if all kernel module are loaded. Do not check for built-ins.
 check_modules=<%= if $check_modules { 'true' } else { 'false' } %>
+
+; Maximum number of cached cookies, required for establishing a
+; session with the broker
+max_cookies=<%= $max_cookies %>
+
+; Tunnel timeout interval in seconds
+tunnel_timeout=<%= $tunnel_timeout %>
+
+; Should PMTU discovery be enabled
+pmtu_discovery=<%= $pmtu_discovery %>
 
 [log]
 ; Log filename

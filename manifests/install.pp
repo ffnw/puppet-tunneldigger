@@ -49,7 +49,7 @@ class tunneldigger::install inherits tunneldigger {
     ensure   => latest,
     provider => git,
     source   => 'https://github.com/wlanslovenija/tunneldigger.git',
-    revision => 'v0.2.0',
+    revision => 'v0.1.0',
   } ->
   python::virtualenv { '/srv/tunneldigger/env_tunneldigger':
     requirements => '/srv/tunneldigger/tunneldigger/broker/requirements.txt',
