@@ -5,11 +5,8 @@
      $port_base,
      $tunnel_id_base,
      $namespace,
-     $check_modules,
-     $max_cookies,
-     $tunnel_timeout,
-     $pmtu_discovery,
-     $filename,
+     $connection_rate_limit,
+     $pmtu,
      $verbosity,
      $log_ip_addresses,
      $session_up,
@@ -49,23 +46,15 @@ tunnel_id_base=<%= $tunnel_id_base %>
 ; namespacing to work
 namespace=<%= $namespace %>
 
-; check if all kernel module are loaded. Do not check for built-ins.
-check_modules=<%= if $check_modules { 'true' } else { 'false' } %>
+; Reject connections if there are less than N seconds since the last connection
+connection_rate_limit=<%= $connection_rate_limit %>
 
-; Maximum number of cached cookies, required for establishing a
-; session with the broker
-max_cookies=<%= $max_cookies %>
-
-; Tunnel timeout interval in seconds
-tunnel_timeout=<%= $tunnel_timeout %>
-
-; Should PMTU discovery be enabled
-pmtu_discovery=<%= $pmtu_discovery %>
+; Set PMTU to a fixed value.  Use 0 for automatic PMTU discovery.  A non-0 value also disables
+; PMTU discovery on the client side, by having the server not respond to client-side PMTU
+; discovery probes.
+pmtu=<%= $pmtu %>
 
 [log]
-; Log filename
-filename=<%= $filename %>
-
 ; Verbosity
 verbosity=<%= $verbosity %>
 
