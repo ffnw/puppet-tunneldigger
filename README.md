@@ -83,7 +83,7 @@ tunneldigger::interface { 'backbone':
 ## Limitations
 
 ### OS compatibility
-* Debian 8
+* Debian 9
 
 ## Development
 

@@ -6,21 +6,29 @@ class tunneldigger::install inherits tunneldigger {
     }
   }
 
-  class { 'python' :
-    version    => 'system',
-    pip        => 'present',
-    dev        => 'present',
-    virtualenv => 'present',
-    gunicorn   => 'absent',
-  } ->
   package {
     default:
       ensure => latest;
     'iproute':;
     'bridge-utils':;
-    'libnetfilter-conntrack3':;
+    'libnetfilter-conntrack-dev':;
+    'libnfnetlink-dev':;
+    'libffi-dev':;
+    'python-dev':;
     'libevent-dev':;
     'ebtables':;
+  } ->
+  file_line { 'tunneldigger l2tp_core module':
+    path => '/etc/modules',
+    line => 'l2tp_core',
+  } ->
+  file_line { 'tunneldigger l2tp_eth module':
+    path => '/etc/modules',
+    line => 'l2tp_eth',
+  } ->
+  file_line { 'tunneldigger l2tp_netlink module':
+    path => '/etc/modules',
+    line => 'l2tp_netlink',
   } ->
   file {
     default:
@@ -30,6 +38,13 @@ class tunneldigger::install inherits tunneldigger {
       mode   => '0755';
     '/srv/tunneldigger':;
     '/etc/tunneldigger':;
+  } ->
+  file { '/srv/tunneldigger/setup.sh':
+    ensure => file,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0744',
+    source => 'puppet:///modules/tunneldigger/setup.sh',
   } ->
   file { '/srv/tunneldigger/start.sh':
     ensure => file,
@@ -49,12 +64,12 @@ class tunneldigger::install inherits tunneldigger {
     ensure   => latest,
     provider => git,
     source   => 'https://github.com/wlanslovenija/tunneldigger.git',
-    revision => 'v0.1.0',
-  } ->
-  python::virtualenv { '/srv/tunneldigger/env_tunneldigger':
-    requirements => '/srv/tunneldigger/tunneldigger/broker/requirements.txt',
-    owner        => 'root',
-    group        => 'root',
+    revision => 'v0.3.0',
+  } ~>
+  exec { 'Setup Tunneldigger':
+    command => '/srv/tunneldigger/setup.sh',
+    cwd     => '/srv/tunneldigger',
+    user    => 'root',
   }
 
 }

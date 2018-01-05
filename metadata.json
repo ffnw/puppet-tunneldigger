@@ -1,6 +1,6 @@
 {
   "name": "ffnw-tunneldigger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Simon Kurka",
   "summary": "Installs and manages tunneldigger server.",
   "license": "GPLv2",
@@ -9,8 +9,7 @@
   "issues_url": "https://github.com/ffnw/puppet-tunneldigger/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs-vcsrepo","version_requirement":">= 1.3.2"},
-    {"name":"stankevich-python","version_requirement":">= 1.12.0"}
+    {"name":"puppetlabs-vcsrepo","version_requirement":">= 1.3.2"}
   ],
   "data_provider": null
 }
