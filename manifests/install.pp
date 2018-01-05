@@ -64,7 +64,7 @@ class tunneldigger::install inherits tunneldigger {
     ensure   => latest,
     provider => git,
     source   => 'https://github.com/wlanslovenija/tunneldigger.git',
-    revision => 'v0.3.0',
+    revision => 'master',
   } ~>
   exec { 'Setup Tunneldigger':
     command => '/srv/tunneldigger/setup.sh',
